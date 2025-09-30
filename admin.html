@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COAB - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>COAB - Admin Dashboard</h1>
+        </header>
+
+        <!-- Login Form -->
+        <div id="login-form" class="form-section">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-email">Email</label>
+                    <input type="email" id="admin-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+
+        <!-- Loading State -->
+        <div id="admin-loading" class="loading" style="display: none;">
+            <p>Loading submissions...</p>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard-section" style="display: none;">
+            <div class="dashboard-header">
+                <h2>Application Submissions</h2>
+                <div class="dashboard-actions">
+                    <span id="submission-count" class="submission-count">0 submissions</span>
+                    <button id="refresh-btn" class="btn-secondary">Refresh</button>
+                    <button id="logout-btn" class="btn-secondary">Logout</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Submitted At</th>
+                            <th>Q1</th>
+                            <th>Q2</th>
+                            <th>Q3</th>
+                            <th>Q4</th>
+                            <th>Q5</th>
+                            <th>Q6</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissions-tbody">
+                        <!-- Submissions will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="no-submissions" class="no-data" style="display: none;">
+                <p>No submissions yet.</p>
+            </div>
+        </div>
+
+        <!-- Error Messages -->
+        <div id="admin-error" class="message-section" style="display: none;">
+            <div class="message error">
+                <p id="admin-error-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COAB - Backend Developer Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>COAB - Backend Developer Application</h1>
+            <p class="intro-text">Thank you for your interest! This short questionnaire helps us understand your working style. It should take about 5 minutes.</p>
+        </header>
+
+        <!-- Initial Application Form -->
+        <div id="initial-form" class="form-section">
+            <form id="applicant-info-form">
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" id="full-name" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <button type="submit" class="btn-primary" id="start-questionnaire-btn">Start Questionnaire</button>
+            </form>
+        </div>
+
+        <!-- Duplicate Entry Message -->
+        <div id="duplicate-message" class="message-section" style="display: none;">
+            <div class="message success">
+                <p>It looks like you've already submitted an application with this email. Thank you!</p>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading" style="display: none;">
+            <p>Checking your information...</p>
+        </div>
+
+        <!-- Questionnaire Section -->
+        <div id="questionnaire" class="form-section" style="display: none;">
+            <form id="questionnaire-form">
+                <!-- Question 1 -->
+                <div class="question-group">
+                    <h3>Question 1</h3>
+                    <p class="question-text">When you picture your ideal work environment two years from now, what does it look like?</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="q1" value="A" required>
+                            <span class="radio-text">A small, tight-knit team that has successfully launched a product and is now scaling it from a collaborative co-working space or small office.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q1" value="B" required>
+                            <span class="radio-text">A large, established company with specialized departments, clear career ladders, and a corporate campus.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q1" value="C" required>
+                            <span class="radio-text">A fully remote, global team where interaction is primarily asynchronous and focused on individual tasks.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-group">
+                    <h3>Question 2</h3>
+                    <p class="question-text">You're joining a new project. Which of the following scenarios excites you the most?</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="q2" value="A" required>
+                            <span class="radio-text">The core product is built, but the roadmap is flexible. My role would be to improve existing code while helping define and build the next set of features from scratch.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q2" value="B" required>
+                            <span class="radio-text">The project has a detailed 2-year roadmap, a large existing codebase, and my role would be to own and optimize a specific module within it.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q2" value="C" required>
+                            <span class="radio-text">The project is purely in the R&D phase, focusing on exploring new technologies without a defined product goal yet.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-group">
+                    <h3>Question 3</h3>
+                    <p class="question-text">You're given a critical task that involves a technology you've never used before. What is your first action?</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="q3" value="A" required>
+                            <span class="radio-text">Dive into the official documentation, build a small proof-of-concept to understand the basics, and then start tackling the main task.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q3" value="B" required>
+                            <span class="radio-text">Find the most senior developer on the team and ask for a detailed walkthrough and guidance before writing any code.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q3" value="C" required>
+                            <span class="radio-text">Search for a pre-existing library or a SaaS tool that can handle the requirement to avoid learning the new technology directly.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question-group">
+                    <h3>Question 4</h3>
+                    <p class="question-text">A critical bug is reported in a part of the codebase you didn't write and are unfamiliar with. What's your immediate approach?</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="q4" value="A" required>
+                            <span class="radio-text">Try to replicate the bug. Once replicated, use logging and debugging tools to trace the code's execution flow and form a hypothesis.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q4" value="B" required>
+                            <span class="radio-text">Immediately find the developer who originally wrote the code and ask them to fix it or explain it in detail.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q4" value="C" required>
+                            <span class="radio-text">Look at the commit history to see who last touched the code, and then review the recent changes to see if they introduced the issue.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question-group">
+                    <h3>Question 5</h3>
+                    <p class="question-text">The team is preparing for a crucial client demo. The front-end developer is overwhelmed. The last remaining task is a simple data integration that is technically a "front-end" job. What do you do?</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="q5" value="A" required>
+                            <span class="radio-text">Offer to pick it up. I'd ask the front-end dev for quick guidance on their setup and get it done so the team can succeed.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q5" value="B" required>
+                            <span class="radio-text">Focus on my own backend tasks, as it's important to stay within my defined role to maintain code quality.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q5" value="C" required>
+                            <span class="radio-text">Suggest simplifying the demo to exclude the feature so that everyone can stick to their designated tasks.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question-group">
+                    <h3>Question 6</h3>
+                    <p class="question-text">You have two options for building a new feature: a "perfect," scalable solution that will take two weeks, or a "good enough" V1 that will take three days but will need to be refactored in six months. The product needs to get user feedback fast. Which path do you advocate for?</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="q6" value="A" required>
+                            <span class="radio-text">Build the "good enough" version in three days, but add clear //TODO comments and create a ticket in the backlog to address the technical debt later.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q6" value="B" required>
+                            <span class="radio-text">Argue for the "perfect" solution. Building it right the first time is always cheaper in the long run.</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q6" value="C" required>
+                            <span class="radio-text">Build the quickest possible hack to get it working, and move on to the next feature immediately.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="submit-application-btn">Submit Application</button>
+            </form>
+        </div>
+
+        <!-- Thank You Message -->
+        <div id="thank-you" class="message-section" style="display: none;">
+            <div class="message success">
+                <h2>Thank You!</h2>
+                <p>Your application has been submitted successfully. We'll be in touch soon.</p>
+            </div>
+        </div>
+
+        <!-- Error Messages -->
+        <div id="error-message" class="message-section" style="display: none;">
+            <div class="message error">
+                <p id="error-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
